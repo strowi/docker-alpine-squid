@@ -1,6 +1,5 @@
-FROM alpine:3.4
-
-MAINTAINER Roman vG <strowi@hasnoname.de>
+FROM alpine:3.5
+MAINTAINER Roman v. Gemmeren <strowi@hasnoname.de>
 
 EXPOSE 3128
 VOLUME ["/data"]
