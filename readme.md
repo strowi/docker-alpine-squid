@@ -1,5 +1,7 @@
 # Squid-Proxy
 
+Repo-URL: [https://gitlab.com/strowi/docker-alpine-squid](https://gitlab.com/strowi/docker-alpine-squid)
+
 This is a containerized squid-proxy tailored to cache bigger
 archives/distro-packages like `*.deb`, `*.tar.gz`, [etc](./src/etc/squid/refresh_pattern.conf).
 
