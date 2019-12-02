@@ -2,12 +2,11 @@ version: '2'
 
 services:
   squid:
-    image: squid:latest
+    image: registry.gitlab.com/strowi/docker-alpine-squid:latest
     build: ./
     restart: always
     ports:
       - 3128:3128
-    # environment:
-    #   - SQUID_PEERS=seth sleipnir
+
     volumes:
       - /srv/squid:/data
