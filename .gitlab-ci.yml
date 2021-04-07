@@ -29,5 +29,8 @@ release:
   stage: release
   script:
     - release_latest
+    - docker login -u "strowi" -p "$DOCKER_TOKEN" "docker.io"
+    - docker tag "$CI_REGISTRY_IMAGE:latest" "strowi/alpine-squid"
+    - docker push "strowi/alpine-squid"
   rules:
     - if: '$CI_COMMIT_BRANCH == "master"'
