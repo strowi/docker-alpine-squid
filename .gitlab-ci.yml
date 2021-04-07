@@ -1,31 +1,33 @@
-image: docker:latest
-services:
-- docker:dind
+---
+include:
+  - remote: 'https://gitlab.com/strowi/ci-templates/-/raw/master/build.yml'
+  - remote: 'https://gitlab.com/strowi/ci-templates/-/raw/master/tests.yml'
 
 stages:
   - build
   - release
 
 variables:
-  REGISTRY: registry.gitlab.com
-  CONTAINER_TEST_IMAGE: $CI_REGISTRY_IMAGE:$CI_BUILD_REF_NAME
-  CONTAINER_RELEASE_IMAGE: $CI_REGISTRY_IMAGE:latest
+  CODE_QUALITY_DISABLED: "true"
 
-before_script:
-  - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $REGISTRY
+stages:
+  - build
+  - test
+  - release
 
 build:
+  extends: .build
   stage: build
   script:
-    - docker build --pull -t $CONTAINER_TEST_IMAGE  -f Dockerfile .
-    - docker push $CONTAINER_TEST_IMAGE
+    - build_image
+
+container_scanning:
+  extends: .container_scanning
 
 release:
+  extends: .build
   stage: release
   script:
-    - docker pull $CONTAINER_TEST_IMAGE
-    - docker tag $CONTAINER_TEST_IMAGE $CONTAINER_RELEASE_IMAGE
-    - docker push $CONTAINER_RELEASE_IMAGE
-  only:
-    - master
-
+    - release_latest
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "master"'
