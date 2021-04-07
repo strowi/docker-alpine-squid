@@ -1,5 +1,5 @@
-FROM alpine:3.10
-LABEL maintainer="Roman v. Gemmeren <roman.van-gemmeren@chefkoch.de>"
+FROM alpine:3.12
+LABEL maintainer="strowi <strowi@hasnoname.de>"
 
 RUN apk --update --no-cache add acf-squid \
   && rm -fr /var/cache/squid \
