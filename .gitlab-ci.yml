@@ -1,7 +1,9 @@
 ---
 include:
-  - remote: 'https://gitlab.com/strowi/ci-templates/-/raw/master/build.yml'
-  - remote: 'https://gitlab.com/strowi/ci-templates/-/raw/master/tests.yml'
+  - project: 'strowi/ci-templates'
+    file: '/build.yml'
+  - project: 'strowi/ci-templates'
+    file: '/tests.yml'
 
 stages:
   - build
