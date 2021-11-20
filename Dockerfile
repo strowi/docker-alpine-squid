@@ -1,4 +1,4 @@
-FROM alpine:3.14
+FROM alpine:3.15
 LABEL maintainer="strowi <strowi@hasnoname.de>"
 
 RUN apk --update --no-cache add acf-squid \
