@@ -1,5 +1,8 @@
 # Squid-Proxy
 
+__moved to [https://gitlab.com/strowi/squid](https://gitlab.com/strowi/squid)__
+
+
 Repo-URL: [https://gitlab.com/strowi/docker-alpine-squid](https://gitlab.com/strowi/docker-alpine-squid)
 
 This is a containerized squid-proxy tailored to cache bigger
